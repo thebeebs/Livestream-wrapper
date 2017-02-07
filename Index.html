@@ -54,19 +54,31 @@
       <div class="row">
         <div class="col-md-12">
           <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/vLX9tbsRLz0?rel=0&autoplay=1&loop=1&controls=0&showinfo=0&playlist=vLX9tbsRLz0" name="azuremediaplayer" scrolling="no" frameborder="no" align="center" allowfullscreen></iframe>
-
-<!--            <video loop autoplay poster="images/HoldingVideo.jpg">
-              <source src="https://onedrive.live.com/embed?cid=999BE3B43DB18398&resid=999BE3B43DB18398%212271298&authkey=AGFSQcWIHiG7kBA.mp4" type="video/mp4">
-              Please use a modern browser suc as Microsoft Edge or Google Chrome
-            </video>-->
+              <iframe class="embed-responsive-item" id="mediaplayer" name="mediaplayer" allowfullscreen></iframe>
           </div>
         </div>
-    </div>
+      </div>
+    </div> 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!--Code that gets the correct URL for the live stream -->
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "http://martink.me/api/Settings/SixWeeksLiveUrl",
+            dataType: 'json',
+            success: function (response) {
+              document.getElementById('mediaplayer').src = response.value;
+            }
+        });
+      });
+    </script>
+
   </body>
 </html>
