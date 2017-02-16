@@ -110,12 +110,8 @@
 
       var heartbeat = setInterval(gaHeartBeat, 60000);
       function gaHeartBeat() {
-          ga('send', {
-            hitType: 'heartbeat',
-            eventCategory: 'heartbeat',
-            eventAction: 'heartbeat',
-            eventLabel: 'heartbeat'
-          });  
+        ga('send', 'pageview');
+        console.log("Sent heartbeat to GA"); 
       }
 
 /*      function ga_heartbeat(){
